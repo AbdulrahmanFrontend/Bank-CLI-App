@@ -1,52 +1,237 @@
-# 🏦 Bank-CLI-App
+# Bank Management System 🏦
 
-[![C++](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/std/the-standard)
-[![License](https://img.shields.io/badge/License-MIT-%23007EC6)](https://opensource.org/licenses/MIT)
-[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://learn.microsoft.com/en-us/windows)
-[![Made With](https://img.shields.io/badge/Made%20With-Visual%20Studio-5C2D91?logo=visual-studio)](https://visualstudio.microsoft.com/)
+A comprehensive console-based banking management system built with C++ that provides secure client and user management with role-based access control.
 
+## ✨ Features
 
-A secure command-line banking system developed in C++ for managing clients, transactions, and user permissions with multi-level access control.
+### 🔐 Authentication & Security
 
-## 🖥️ Screenshots
+- **Secure Login System** with username/password authentication
+- **Role-Based Access Control** (RBAC) with granular permissions
+- **Admin protection** (Admin user cannot be deleted)
 
-| Login Screen | Main Menu | Manage Users Menu |
-|--------------|-----------|-------------------|
-| ![Login](screenshots/login.png) | ![Main Menu](screenshots/main_menu.png) | ![Manage Users Menu](screenshots/manage_users_menu.png) |
+### 👥 Client Management
 
-## 🌟 Features
-- Client management (Add/Delete/Update/Find/List)
-- Financial transactions (Deposit/Withdraw)
-- User management with permissions system
-- Secure login system
-- Clean console interface
+- ✅ Add new clients with unique account numbers
+- ✅ View all clients with formatted display
+- ✅ Update client information
+- ✅ Delete clients (with confirmation)
+- ✅ Find clients by account number
+- ✅ Client data validation and duplication prevention
 
-## Requirements
-- C++ compiler (supporting C++11 or later)
-- Standard Library
+### 💰 Transaction Management
 
-## Installation
-1. Clone the repository:
+- 💵 Deposit funds to client accounts
+- 💸 Withdraw funds (with balance validation)
+- 📊 View total balances across all accounts
+- 🏦 Complete transaction history management
+
+### 👨‍💼 User Management
+
+- 👥 Add new system users with customizable permissions
+- 👀 View all users
+- ✏️ Update user credentials and permissions
+- 🗑️ Delete users (except Admin)
+- 🔍 Find users by username
+
+### 🛡️ Permission System
+
+- **7 granular permissions**:
+  - List clients
+  - Add new clients
+  - Delete clients
+  - Update clients
+  - Find clients
+  - Transactions management
+  - Users management
+- **Full access** option for administrators
+- **Access denied** protection for unauthorized actions
+
+## 🚀 Installation & Compilation
+
+### Prerequisites
+
+- C++ compiler (g++, clang++, or MSVC)
+- C++11 or higher standard
+
+### Compilation Command
+
 ```bash
-git clone https://github.com/AbdulrahmanFrontend/Bank-CLI-App.git
+g++ bank-system.cpp -o bank-system -std=c++11
 ```
-2. Open in Visual Studio:
-    - Double-click Bank-CLI-App.sln, OR
-    - In VS: File → Open → Project/Solution → Select .sln file
-3. Build & Run:
-    - Press Ctrl + F5 (Run without debug) or F5 (Debug mode)
 
-## Usage
-- Use the default admin account (Username: Admin, Password: 1234, permission: -1(full access to all features of the app))
-- Follow the on-screen menus to navigate through the system
-- All data is saved in text files (`Clients.txt` and `Users.txt`)
+Run the Application
 
-## File Structure
-- `Clients.txt`: that will be built during the run time
-- `Users.txt`: Stores user accounts and permissions
+```bash
+./bank-system
+```
 
-## 📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 📁 File Structure
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+```text
+bank-management-system/
+│
+├── bank-system.cpp          # Main source code
+├── Clients.txt              # Client data storage
+├── Users.txt                # User credentials and permissions
+└── README.md               # Documentation
+```
+
+## 🎮 Usage
+
+### First-Time Setup
+
+1. Create a Users.txt file with initial admin user:
+
+```text
+Admin#//#123#//#-1
+```
+
+2. Compile and run the application
+3. Login with:
+   - Username: Admin
+   - Password: 123
+
+### Default Login Credentials
+
+- Admin Account: Username: Admin, Password: 123
+- Permissions: Full access (-1)
+
+### Navigation
+
+1. <strong>Login</strong> with your credentials
+2. <strong>Main Menu</strong> offers 8 options:
+
+- Show client list
+- Add new client
+- Delete client
+- Update client info
+- Find client
+- Transactions menu
+- Manage users
+- Logout
+
+3. <strong>Transactions Menu</strong> provides:
+
+- Deposit funds
+- Withdraw funds
+- View total balances
+- Return to main menu
+
+4. <strong>User Management Menu</strong> allows:
+
+- List users
+- Add new user
+- Delete user
+- Update user
+- Find user
+- Return to main menu
+
+## 🔧 Technical Details
+
+### Data Storage Format
+
+- Clients: AccountNumber#//#PinCode#//#Name#//#Phone#//#Balance
+- Users: Username#//#Password#//#Permissions
+
+### Cross-Platform Support
+
+- ✅ Windows (uses cls and pause)
+- ✅ Linux/macOS (uses clear and custom pause)
+- Automatic system detection and command adaptation
+
+### Error Handling
+
+- ✅ Input validation for numbers and strings
+- ✅ File operation error checking
+- ✅ Duplicate account number prevention
+- ✅ Balance validation for withdrawals
+- ✅ Permission checking for all operations
+
+## 🛡️ Security Features
+
+<strong>Password protection</strong> for all user accounts
+<strong>Permission-based access control</strong>
+<strong>Admin account protection</strong> (cannot be deleted)
+<strong>Data validation</strong> on all inputs
+<strong>Secure file operations</strong> with error checking
+
+## 📊 Data Management
+
+### Client Information Stored:
+
+- Account Number (unique identifier)
+- PIN Code
+- Full Name
+- Phone Number
+- Account Balance
+
+### User Information Stored:
+
+- Username (unique identifier)
+- Password
+- Permission level
+
+## 🎯 Permission Levels
+
+| Permission     | Value | Description        |
+| -------------- | ----- | ------------------ |
+| Full Access    | -1    | All permissions    |
+| List Clients   | 1     | View client list   |
+| Add Clients 2  | Add   | new clients        |
+| Delete Clients | 4     | Delete clients     |
+| Update Clients | 8     | Modify client info |
+| Find Clients   | 16    | Search clients     |
+| Transactions   | 32    | Deposit/Withdraw   |
+| Manage Users   | 64    | User management    |
+
+## 🔄 Sample Data Files
+
+## Users.txt Example:
+
+```text
+Admin#//#123#//#-1
+manager#//#pass123#//#127
+teller#//#teller123#//#57
+```
+
+### Clients.txt Example:
+
+```text
+1001#//#1234#//#John Smith#//#555-0101#//#2500.00
+1002#//#5678#//#Jane Doe#//#555-0102#//#1800.50
+1003#//#9012#//#Bob Johnson#//#555-0103#//#3200.75
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+1. <strong>File not found errors:</strong> Ensure Users.txt and Clients.txt exist
+2. <strong>Permission denied:</strong> Check file write permissions
+3. <strong>Compilation errors:</strong> Use C++11 or higher standard
+
+### File Permissions:
+
+```bash
+chmod 644 Users.txt Clients.txt
+```
+
+## 📝 License
+
+This project is open source and available under the [MIT](LICENSE) License.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Submit a pull request
+
+## 📞 Support
+
+For issues or questions:
+
+1. Check file permissions
+2. Verify data file formatting
+3. Ensure proper compilation flags
